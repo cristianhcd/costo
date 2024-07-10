@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Costo del aparato cuando tienes Etiqueta de Eficiencia</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Costo del aparato cuando tienes Etiqueta de Eficiencia</h1>
+        <form id="calcForm">
+            <label for="kwRateOption">¿Tienes el valor por kilowatt?</label>
+            <select id="kwRateOption" name="kwRateOption" onchange="toggleKwRateInput()">
+                <option value="yes">Sí</option>
+                <option value="no">No</option>
+            </select>
+            <div id="kwRateSection">
+                <label for="kwRate">Valor por kilowatt (en $):</label>
+                <input type="number" id="kwRate" name="kwRate" step="0.01">
+            </div>
+            <div id="kwCalcSection" style="display: none;">
+                <label for="totalKw">Kilowatts consumidos al mes:</label>
+                <input type="number" id="totalKw" name="totalKw" step="0.01">
+                <span class="help-text">Esta en tu boleta</span>
+                <br>
+                <label for="totalCost">Costo del mes de los kilowatts consumidos (en $):</label>
+                <input type="number" id="totalCost" name="totalCost" step="0.01">
+                <span class="help-text">Está en tu boleta</span>
+                <br>
+                <button type="button" onclick="calculateKwRate()">Calcular valor por kilowatt</button>
+            </div>
+            <br>
+            <label for="kwUsage">Cantidad de kilowatts consumidos por el aparato al mes:</label>
+            <input type="number" id="kwUsage" name="kwUsage" step="0.01" required>
+            <span class="help-text">Es el valor que está en la etiqueta de eficiencia de tu aparato</span>
+            <br>
+            <button type="button" onclick="calculateCost()">Calcular costo mensual</button>
+        </form>
+        <h2 id="result"></h2>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
