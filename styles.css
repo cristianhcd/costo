@@ -1,62 +1,72 @@
 body {
     font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     margin: 0;
-    background-color: #f0f0f0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
 }
 
-.container {
-    background-color: #fff;
-    padding: 20px;
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+main {
+    padding: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 600px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
-    margin-bottom: 20px;
+h1, h2 {
+    margin-bottom: 1rem;
 }
 
 label {
     display: block;
-    margin-top: 10px;
+    margin-top: 1rem;
 }
 
-input, select, button {
+input[type="number"], select {
     width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    margin-bottom: 15px;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
 button {
-    background-color: #007BFF;
-    color: #fff;
+    background-color: #4CAF50;
+    color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 0.75rem 1.5rem;
+    margin-top: 1rem;
     border-radius: 4px;
     cursor: pointer;
+    font-size: 1rem;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #45a049;
 }
 
-#result {
-    margin-top: 20px;
-    font-size: 1.2em;
+section {
+    margin-bottom: 2rem;
 }
 
-.help-text {
-    font-size: 0.9em;
-    color: #555;
-    display: block;
-    margin-top: -10px;
-    margin-bottom: 10px;
+#resultado-costo-kw-mes, #resultado-kw-mes {
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+#costo-mensual {
+    margin-top: 1rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #d9534f;
+    text-align: center;
 }

@@ -1,42 +1,84 @@
-function toggleKwRateInput() {
-    const kwRateOption = document.getElementById('kwRateOption').value;
-    const kwRateSection = document.getElementById('kwRateSection');
-    const kwCalcSection = document.getElementById('kwCalcSection');
+document.addEventListener("DOMContentLoaded", () => {
+    const costoKwOption = document.getElementById("costo-kw-option");
+    const siCostoKw = document.getElementById("si-costo-kw");
+    const noCostoKw = document.getElementById("no-costo-kw");
+    const kwConsumidosBoleta = document.getElementById("kw-consumidos-boleta");
+    const kwConsumidos = document.getElementById("kw-consumidos");
+    const costoKwCalculado = document.getElementById("costo-kw-calculado");
 
-    if (kwRateOption === 'yes') {
-        kwRateSection.style.display = 'block';
-        kwCalcSection.style.display = 'none';
-    } else {
-        kwRateSection.style.display = 'none';
-        kwCalcSection.style.display = 'block';
-    }
-}
+    const costoAparatoOption = document.getElementById("costo-aparato-option");
+    const siCostoAparato = document.getElementById("si-costo-aparato");
+    const noCostoAparato = document.getElementById("no-costo-aparato");
+    const wEtiqueta = document.getElementById("w-etiqueta");
+    const hEtiqueta = document.getElementById("h-etiqueta");
+    const vecesEtiqueta = document.getElementById("veces-etiqueta");
+    const kwMesCalculado = document.getElementById("kw-mes-calculado");
 
-function calculateKwRate() {
-    const totalKw = parseFloat(document.getElementById('totalKw').value);
-    const totalCost = parseFloat(document.getElementById('totalCost').value);
-    const resultElement = document.getElementById('result');
+    const calcularCostoMensualBtn = document.getElementById("calcular-costo-mensual");
+    const costoMensualCalculado = document.getElementById("costo-mensual-calculado");
 
-    if (isNaN(totalKw) || isNaN(totalCost)) {
-        resultElement.textContent = 'Por favor, introduce valores válidos para calcular el valor por kilowatt.';
-        return;
-    }
+    // Mostrar y ocultar secciones en función de las selecciones
+    costoKwOption.addEventListener("change", (event) => {
+        if (event.target.value === "si") {
+            siCostoKw.style.display = "block";
+            noCostoKw.style.display = "none";
+        } else if (event.target.value === "no") {
+            siCostoKw.style.display = "none";
+            noCostoKw.style.display = "block";
+        } else {
+            siCostoKw.style.display = "none";
+            noCostoKw.style.display = "none";
+        }
+    });
 
-    const kwRate = totalCost / totalKw;
-    document.getElementById('kwRate').value = kwRate.toFixed(2);
-    resultElement.textContent = `El valor calculado por kilowatt es: $${kwRate.toFixed(2)}`;
-}
+    costoAparatoOption.addEventListener("change", (event) => {
+        if (event.target.value === "si") {
+            siCostoAparato.style.display = "block";
+            noCostoAparato.style.display = "none";
+        } else if (event.target.value === "no") {
+            siCostoAparato.style.display = "none";
+            noCostoAparato.style.display = "block";
+        } else {
+            siCostoAparato.style.display = "none";
+            noCostoAparato.style.display = "none";
+        }
+    });
 
-function calculateCost() {
-    const kwRate = parseFloat(document.getElementById('kwRate').value);
-    const kwUsage = parseFloat(document.getElementById('kwUsage').value);
-    const resultElement = document.getElementById('result');
+    // Calcular COSTO-KW-MES
+    [kwConsumidosBoleta, kwConsumidos].forEach((input) => {
+        input.addEventListener("input", () => {
+            const boleta = parseFloat(kwConsumidosBoleta.value) || 0;
+            const costo = parseFloat(kwConsumidos.value) || 0;
+            if (boleta > 0) {
+                const costoKwMes = costo / boleta;
+                costoKwCalculado.textContent = costoKwMes.toFixed(2);
+            } else {
+                costoKwCalculado.textContent = "0.00";
+            }
+        });
+    });
 
-    if (isNaN(kwRate) || isNaN(kwUsage)) {
-        resultElement.textContent = 'Por favor, introduce valores válidos.';
-        return;
-    }
+    // Calcular KW-MES
+    [wEtiqueta, hEtiqueta, vecesEtiqueta].forEach((input) => {
+        input.addEventListener("input", () => {
+            const watts = parseFloat(wEtiqueta.value) || 0;
+            const horas = parseFloat(hEtiqueta.value) || 0;
+            const veces = parseFloat(vecesEtiqueta.value) || 0;
+            const kwMes = (watts * horas * veces) / 1000;
+            kwMesCalculado.textContent = kwMes.toFixed(2);
+        });
+    });
 
-    const monthlyCost = kwRate * kwUsage;
-    resultElement.textContent = `El costo mensual del aparato es: $${monthlyCost.toFixed(2)}`;
-}
+    // Calcular costo mensual
+    calcularCostoMensualBtn.addEventListener("click", () => {
+        const costoKwMes = parseFloat(costoKwCalculado.textContent) || parseFloat(document.getElementById("costo-kw-mes").value) || 0;
+        const kwMes = parseFloat(kwMesCalculado.textContent) || parseFloat(document.getElementById("kw-mes").value) || 0;
+
+        if (costoKwMes > 0 && kwMes > 0) {
+            const costoMensual = Math.round(costoKwMes * kwMes);
+            costoMensualCalculado.textContent = `${costoMensual} pesos`;
+        } else {
+            costoMensualCalculado.textContent = "0 pesos";
+        }
+    });
+});
