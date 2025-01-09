@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const costo = parseFloat(kwConsumidos.value) || 0;
             if (boleta > 0) {
                 const costoKwMes = costo / boleta;
-                costoKwCalculado.textContent = costoKwMes.toFixed(2);
+                costoKwCalculado.textContent = costoKwMes.toFixed(0);
             } else {
                 costoKwCalculado.textContent = "0.00";
             }
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const horas = parseFloat(hEtiqueta.value) || 0;
             const veces = parseFloat(vecesEtiqueta.value) || 0;
             const kwMes = (watts * horas * veces) / 1000;
-            kwMesCalculado.textContent = kwMes.toFixed(2);
+            kwMesCalculado.textContent = kwMes.toFixed(0);
         });
     });
 

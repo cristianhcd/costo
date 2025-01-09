@@ -1,75 +1,67 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Costo del aparato en 1 mes</title>
+    <title>Costo del aparato en mensual</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <header>
-        <h1>Costo del aparato en 1 mes</h1>
+        <h1>Costo del aparato mensual</h1> 
     </header>
     <main>
-        <!-- Sección 1: Costo de KiloWatt mes -->
         <section id="costo-kw">
-            <h2>Costo de KiloWatt mes</h2>
+            <h2>Costo de KiloWatt mes</h2> 
             <label for="costo-kw-option">¿Tienes el valor por kilowatt?</label>
             <select id="costo-kw-option" name="costo-kw-option">
                 <option value="">Selecciona una opción</option>
                 <option value="si">Sí</option>
                 <option value="no">No</option>
-            </select>
-
+            </select> <span class="help-text">Si no lo conoces, tienes que buscar tu boleta para calcularlo</span> 
             <div id="si-costo-kw" style="display: none;">
                 <label for="costo-kw-mes">Ingresa el costo por kilowatt:</label>
-                <input type="number" id="costo-kw-mes" name="costo-kw-mes" min="0" step="0.01">
+                <input type="number" id="costo-kw-mes" name="costo-kw-mes" min="0" step="1">
             </div>
-
             <div id="no-costo-kw" style="display: none;">
                 <label for="kw-consumidos-boleta">Kilowatts consumidos al mes en tu boleta:</label>
-                <input type="number" id="kw-consumidos-boleta" name="kw-consumidos-boleta" min="0" step="0.01">
-
+                <input type="number" id="kw-consumidos-boleta" name="kw-consumidos-boleta" min="0" step="1"> <span class="help-text">Esta en tu boleta, en la boleta de ENEL aparece entre parentesis como electricidad consumida</span> 
                 <label for="kw-consumidos">Costo del mes de los kilowatts consumidos en tu boleta:</label>
-                <input type="number" id="kw-consumidos" name="kw-consumidos" min="0" step="0.01">
-
-                <p id="resultado-costo-kw-mes">COSTO-KW-MES: <span id="costo-kw-calculado">0.00</span></p>
+                <input type="number" id="kw-consumidos" name="kw-consumidos" min="0" step="1"> <span class="help-text">Esta en tu boleta, en la boleta de ENEL aparece como electricidad consumida</span> 
+                <p id="resultado-costo-kw-mes">Valor del kiloWatt-mes: <span id="costo-kw-calculado">0.00</span> 
+                </p>
             </div>
         </section>
-
-        <!-- Sección 2: Costo del aparato -->
         <section id="costo-aparato">
-            <h2>Costo del aparato</h2>
-            <label for="costo-aparato-option">¿Tienes el valor por kilowatt del aparato?</label>
+            <h2>kiloWatts consumidos por el aparato en un mes</h2> 
+            <label for="costo-aparato-option">¿Tienes el valor de kilowatt consumidos en un mes por el aparato?</label>
             <select id="costo-aparato-option" name="costo-aparato-option">
                 <option value="">Selecciona una opción</option>
                 <option value="si">Sí</option>
                 <option value="no">No</option>
             </select>
-
             <div id="si-costo-aparato" style="display: none;">
                 <label for="kw-mes">Ingresa el consumo mensual en kilowatts:</label>
-                <input type="number" id="kw-mes" name="kw-mes" min="0" step="0.01">
+                <input type="number" id="kw-mes" name="kw-mes" min="0" step="0.01"> <span class="help-text">Es el valor que está en la etiqueta de eficiencia de tu aparato</span> 
             </div>
-
             <div id="no-costo-aparato" style="display: none;">
                 <label for="w-etiqueta">¿Cuántos Watts dice que gasta?</label>
                 <input type="number" id="w-etiqueta" name="w-etiqueta" min="0">
-
                 <label for="h-etiqueta">¿Cuántas horas se ocupa en un día?</label>
                 <input type="number" id="h-etiqueta" name="h-etiqueta" min="0" step="0.1">
-
                 <label for="veces-etiqueta">¿Cuántas veces se ocupa por día?</label>
                 <input type="number" id="veces-etiqueta" name="veces-etiqueta" min="0">
-
-                <p id="resultado-kw-mes">KW-MES: <span id="kw-mes-calculado">0.00</span></p>
+                <p id="resultado-kw-mes">KiloWatts consumidos en un mes: <span id="kw-mes-calculado">0.00</span> 
+                </p>
             </div>
-
             <button id="calcular-costo-mensual">CALCULAR COSTO MENSUAL</button>
-            <p id="costo-mensual">Costo mensual: <span id="costo-mensual-calculado">0.00</span></p>
+            <p id="costo-mensual">Costo mensual: <span id="costo-mensual-calculado">0.00</span> 
+            </p>
         </section>
     </main>
-
     <script src="script.js"></script>
 </body>
+
 </html>

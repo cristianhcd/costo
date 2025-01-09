@@ -70,3 +70,11 @@ section {
     color: #d9534f;
     text-align: center;
 }
+
+.help-text {
+    font-size: 0.75em;
+    color: #555;
+    display: block;
+    margin-top: 1 rem;
+    margin-bottom: 1 rem;
+}
