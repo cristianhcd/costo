@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const watts = parseFloat(wEtiqueta.value) || 0;
             const horas = parseFloat(hEtiqueta.value) || 0;
             const veces = parseFloat(vecesEtiqueta.value) || 0;
-            const kwMes = (watts * horas * veces) / 1000;
+            const kwMes = (watts * horas * veces * 30 ) / 1000;
             kwMesCalculado.textContent = kwMes.toFixed(0);
         });
     });
